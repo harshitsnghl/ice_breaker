@@ -17,8 +17,11 @@ def lookup(name: str) -> str:
         temperature=0,
         model_name="gpt-3.5-turbo",
     )
+
+    # Composition of this prompt has an output indicator
     template = """given the full name {name_of_person} I want you to get it me a link to their Linkedin profile page.
                               Your answer should contain only a URL"""
+
 
     prompt_template = PromptTemplate(
         template=template, input_variables=["name_of_person"]
@@ -31,6 +34,8 @@ def lookup(name: str) -> str:
         )
     ]
 
+    # Package by Harrison Chase(Co Founder) of lang chain
+    # Reasoning engine of our agent
     react_prompt = hub.pull("hwchase17/react")
     agent = create_react_agent(llm=llm, tools=tools_for_agent, prompt=react_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools_for_agent, verbose=True)
@@ -44,4 +49,4 @@ def lookup(name: str) -> str:
 
 
 if __name__ == "__main__":
-    print(lookup(name="Eden Marco Udemy"))
+    print(lookup(name="Harshit Singhal Developer ADP"))
