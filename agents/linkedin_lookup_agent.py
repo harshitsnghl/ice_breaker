@@ -19,8 +19,10 @@ def lookup(name: str) -> str:
     )
 
     # Composition of this prompt has an output indicator
-    template = """given the full name {name_of_person} I want you to get it me a link to their Linkedin profile page.
-                              Your answer should contain only a URL"""
+    template = """
+        Given the full name {name_of_person}. 
+        I want you to get it me a link to their Linkedin profile page.
+    """
 
 
     prompt_template = PromptTemplate(
@@ -28,7 +30,7 @@ def lookup(name: str) -> str:
     )
     tools_for_agent = [
         Tool(
-            name="Crawl Google 4 linkedin profile page",
+            name="Crawl 4 Google Results for linkedin profile page",
             func=get_profile_url_tavily,
             description="useful for when you need get the Linkedin Page URL",
         )
@@ -49,4 +51,4 @@ def lookup(name: str) -> str:
 
 
 if __name__ == "__main__":
-    print(lookup(name="Harshit Singhal Developer ADP"))
+    print(lookup(name="Harshit Singhal"))

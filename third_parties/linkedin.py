@@ -10,7 +10,7 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
     Manually scrape the information from the LinkedIn profile"""
 
     if mock:
-        linkedin_profile_url = "https://gist.githubusercontent.com/harshitsnghl/fd634b4091b0ca288b12220c90303eeb/raw/2102054db274b9872b897ecc16c3322a1bc6e25c/dwayne.json"
+        linkedin_profile_url = "https://gist.githubusercontent.com/harshitsnghl/fd634b4091b0ca288b12220c90303eeb/raw/2f00fc9a1e30d1428fb3e7e7e6008db4b53f39a7/harshit-linkedin.json"
         response = requests.get(
             linkedin_profile_url,
             timeout=10,
@@ -43,5 +43,6 @@ if __name__ == "__main__":
     print(
         scrape_linkedin_profile(
             linkedin_profile_url="https://www.linkedin.com/in/eden-marco/",
+            mock=True,
         )
     )
